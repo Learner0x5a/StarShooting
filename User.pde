@@ -8,7 +8,7 @@ class User{
   User(float _radial_distance){
 
     radial_distance = _radial_distance;
-    vel = 0.1;
+    vel = 1;
     //uCol = color(random(255), random(255), random(255));
     uCol = 255;
     uStroke = false;
@@ -37,12 +37,19 @@ class User{
     
 
 
-    print(radial_distance,posX,posY,'\n');
+    //print(radial_distance,posX,posY,'\n');
     
 }
   
   void move(){
-    radial_distance -= vel;
+    if(keyPressed || mousePressed){
+      if(key==' '||mouseButton== LEFT){
+        radial_distance += 5;
+      }
+      
+    }else{
+      radial_distance -= vel;
+    }
 
     //if(posX >= width || posX <= 0 || posY >= height || posY <= 0){
     //  radial_distance = width/4;
