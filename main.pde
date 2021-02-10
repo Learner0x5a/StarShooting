@@ -2,6 +2,8 @@ PImage img;  // Declare a variable of type PImage
 User myUser;
 int fps = 60;
 int c = 60*fps; // game time: 60 seconds
+int acc_rate = 1; // accelerate rate for rotation
+int acc_interval = 5; // accelerate each 5 seconds
 int score = 0; // initial score
 PFont font;
 ArrayList<Star> myStars = new ArrayList<Star>();
@@ -39,35 +41,32 @@ void draw() {
     counter();
     fill(0);
     // should be replaces by image
-    ellipse(width/2, height, width/2, width/2);
+    //ellipse(width/2, height, width/2, width/2);
     
     myUser.display();
     myUser.move();
     
     for(Star myStar:myStars){
-      if(euc_dis(myUser.posX,myStar.posX,myUser.posY,myStar.posY)<15){
+      if(euc_dis(myUser.posX,myStar.posX,myUser.posY,myStar.posY)<20){
         myStar.move();
         score += 1;
       }
       myStar.display();
-
     }
-    
-
-
   }
 }
 
 void counter(){
   c -= 1;
+  if (c % (fps * 5) == 0){
+    acc_rate += 1;
+  }
   fill(255);
   text(c/fps,0.05*width,0.05*height);
   text(score,0.95*width,0.05*height);  
   if(c==0){
-    //fill(20,40,240);
     noStroke();
-    //rect(100,400,450,60);
-    text("Game Over",width/2,height/2);
+    text("Game Over",0.4*width,0.05*height);
     stop();
   }
 }

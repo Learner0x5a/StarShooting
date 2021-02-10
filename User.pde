@@ -23,10 +23,11 @@ class User{
     
     pushMatrix();
     translate(width/2, height);
-    rotate(radians(frameCount * 1  % 180));
+    rotate(radians(frameCount * acc_rate  % 180));
+    ellipse(0,0,width/2,width/2);
+    
     // User is a circle at (-radial_distance, 0)
     //ellipse(-radial_distance, 0, 20, 20);
-    
     // get the absolute coordinates for (-radial_distance, 0)
     posX = modelX(-radial_distance, 0, 0);
     posY = modelY(-radial_distance, 0, 0);
@@ -35,8 +36,6 @@ class User{
     // draw the user 
     ellipse(posX,posY,20,20);
     
-
-
     //print(radial_distance,posX,posY,'\n');
     
 }

@@ -6,7 +6,7 @@ class Star{
   Star(){
     posX = random(width/2,width);
     posY = random(height/4,height-width/4);
-    print("Star:",posX,posY);
+    //print("Star:",posX,posY,'\n');
     sCol = color(255,255,0);
     sStroke = false;
   }
